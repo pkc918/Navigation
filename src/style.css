@@ -49,6 +49,44 @@ body {
   border-radius: 3px;
   color: #fff;
 }
+.hiddenDialog {
+  display: none;
+}
+.dialog {
+  position: absolute;
+  margin: 0 30px;
+  padding: 10px 0;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+}
+.dialog div {
+  width: 315px;
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.dialog div label {
+  font-weight: 600;
+  font-size: 16px;
+}
+.dialog div input {
+  width: 80%;
+  height: 40px;
+  padding: 5px 10px;
+}
+.dialog div button {
+  padding: 10px 20px;
+  border: 1px solid #3385ff;
+  background-color: #3385ff;
+  border-radius: 10px;
+  color: #fff;
+}
+.dialog div .determineBtn {
+  margin-left: 20%;
+}
 .globalMain .siteList {
   margin: 0 10px;
   padding: 10px 0;

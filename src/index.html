@@ -14,10 +14,24 @@
       <form class="searchForm" method="GET" action="https://www.baidu.com/s">
         <!-- https://www.google.com/search?q  谷歌 -->
         <input type="text" name="wd" />
-        <button class="searchWeb">搜索</button>
-        <button class="addWeb">添加</button>
+        <button class="searchWeb" type="submit">搜索</button>
+        <button class="addWeb" type="button">添加</button>
       </form>
     </header>
+    <div class="dialog">
+      <div>
+        <label for="webTitle">名称：</label>
+        <input type="text" id="webTitle" class="webTitle" />
+      </div>
+      <div>
+        <label for="webUrl">地址：</label>
+        <input type="text" id="webUrl" class="webUrl" />
+      </div>
+      <div class="btn">
+        <button class="determineBtn">确定</button>
+        <button>取消</button>
+      </div>
+    </div>
     <main class="globalMain">
       <ul class="siteList">
         <li>
