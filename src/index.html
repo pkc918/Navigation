@@ -11,9 +11,12 @@
   </head>
   <body>
     <header class="globalHeader">
-      <input type="text" />
-      <button class="searchWeb">搜索</button>
-      <button class="addWeb">添加</button>
+      <form class="searchForm" method="GET" action="https://www.baidu.com/s">
+        <!-- https://www.google.com/search?q  谷歌 -->
+        <input type="text" name="wd" />
+        <button class="searchWeb">搜索</button>
+        <button class="addWeb">添加</button>
+      </form>
     </header>
     <main class="globalMain">
       <ul class="siteList">

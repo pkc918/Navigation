@@ -19,17 +19,19 @@ body {
 }
 .globalHeader {
   margin: 10px;
+}
+.globalHeader .searchForm {
   display: flex;
   justify-content: space-between;
 }
-.globalHeader input {
+.globalHeader .searchForm input {
   width: 100%;
   height: 40px;
   border: 1px solid #eee;
   padding: 5px 10px;
   border-radius: 5px;
 }
-.globalHeader button {
+.globalHeader .searchForm button {
   white-space: nowrap;
   margin-left: 5px;
   padding: 0 15px;
