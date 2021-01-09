@@ -58,16 +58,5 @@ $('.determineBtn').on('click',()=>{
     title:title,
     logoType:'text'
   })
-  hashMap.forEach(node => {
-    const $li = $(`
-      <li>
-        <a href="${node.url}">
-          <div class="site">
-            <div class="logo">${node.url[8].toUpperCase()}</div>
-            <div class="link">${node.title}</div>
-          </div>
-        </a>
-      </li>
-    `).appendTo($siteList)
-  })
+  render()
 })
