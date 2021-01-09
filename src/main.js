@@ -17,12 +17,27 @@ const storageData = () => {
 
 const render = () => {
   hashMap.forEach(node => {
+    if(node.logoType === 'image') {
+      const $li = $(`
+        <li>
+          <a href="${node.url}">
+            <div class="site">
+              <div class="logo">
+                <img src="${node.logo}" />
+              </div>
+              <div class="link">${node.title}</div>
+            </div>
+          </a>
+        </li>
+      `).appendTo($siteList)
+      return
+    }
     const $li = $(`
       <li>
         <a href="${node.url}">
           <div class="site">
             <div class="logo">
-              <img src="${node.logo}" alt="" />
+              ${node.url[0].toUpperCase()}
             </div>
             <div class="link">${node.title}</div>
           </div>
@@ -32,6 +47,7 @@ const render = () => {
   })
 }
 render()
+
 
 /* 模态框展示 */
 $('.addWeb').on('click',()=>{
@@ -48,18 +64,17 @@ $('.webTitle').on('blur',(e) => {
 })
 $('.webUrl').on('blur',(e) => {
   url = (e.target.value).trim()
-  logoUrl = url
 })
 
 /* 确认 */
 $('.determineBtn').on('click',()=>{
   $siteList.find('li').remove()
   if(title === undefined || title === '') {
-    title = logoUrl
+    title = url
   }
   url = 'https://' + url
   hashMap.push({
-    logo:logoUrl[0].toUpperCase(),
+    logo:url[0].toUpperCase(),
     url:url,
     title:title,
     logoType:'text'
