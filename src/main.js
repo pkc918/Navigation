@@ -13,7 +13,7 @@ const hashMap = webDataList || [
   {logo:'./images/acfun.png',url:'https://www.acfun.cn/',title:'AcFun',logoType:'image'},
   {logo:'D',url:'https://developer.mozilla.org/zh-CN/',title:'MDN web docs',logoType:'text'},
   {logo:'./images/w3school.png',url:'https://www.w3school.com.cn/',title:'W3school',logoType:'image'},
-  {logo:'./images/zhihu.jpg',url:'https://zhihu.com/follow',title:'知乎',logoType:'image'},
+  {logo:'./images/zhihu.png',url:'https://zhihu.com/follow',title:'知乎',logoType:'image'},
   {logo:'./images/gold.png',url:'https://juejin.cn/',title:'掘金',logoType:'image'},
 ]
 
@@ -21,6 +21,7 @@ const storageData = () => {
   const hashWebData = JSON.stringify(hashMap)
   localStorage.setItem('webData',hashWebData)
 }
+storageData()
 /* 模态框内容 */
 let title,url,logoUrl
 $('.webTitle').on('blur',(e) => {
@@ -71,6 +72,8 @@ $('.addWeb').on('click',()=>{
 })
 const hidden = () => {
   $('.dialog').addClass('hiddenDialog')
+  $('.webTitle').val('')
+  $('.webUrl').val('')
 }
 
 /* 确认 */
