@@ -1,10 +1,19 @@
+/* init */
 let $siteList = $('.siteList')
-const hashMap = [
+const webData = localStorage.getItem('webData')
+const webDataList = JSON.parse(webData)
+
+const hashMap = webDataList || [
   {logo:'./images/github.jpg',url:'https://github.com/',title:'Github',logoType:'image'},
   {logo:'./images/bilibili.jpg',url:'https://bilibili.com/',title:'哔哩哔哩',logoType:'image'},
   {logo:'./images/acfun.png',url:'https://www.acfun.cn/',title:'AcFun',logoType:'image'},
   {logo:'Z',url:'https://zhihu.com/follow',title:'知乎',logoType:'text'}
 ]
+
+const storageData = () => {
+  const hashWebData = JSON.stringify(hashMap)
+  localStorage.setItem('webData',hashWebData)
+}
 
 const render = () => {
   hashMap.forEach(node => {
@@ -24,18 +33,15 @@ const render = () => {
 }
 render()
 
-
-
-
-
-
-
+/* 模态框展示 */
 $('.addWeb').on('click',()=>{
   $('.dialog').removeClass('hiddenDialog')
 })
 const hidden = () => {
   $('.dialog').addClass('hiddenDialog')
 }
+
+/* 模态框内容 */
 let title,url,logoUrl
 $('.webTitle').on('blur',(e) => {
   title = (e.target.value).trim()
@@ -45,18 +51,28 @@ $('.webUrl').on('blur',(e) => {
   logoUrl = url
 })
 
+/* 确认 */
 $('.determineBtn').on('click',()=>{
   $siteList.find('li').remove()
   if(title === undefined || title === '') {
     title = logoUrl
   }
   url = 'https://' + url
-  hidden()
   hashMap.push({
     logo:logoUrl[0].toUpperCase(),
     url:url,
     title:title,
     logoType:'text'
   })
+  storageData()
   render()
+  hidden()
 })
+/* 取消 */
+$('.cancelBtn').on('click',()=>{
+  hidden()
+})
+
+window.onbeforeunload = ()=>{
+  storageData()
+}
