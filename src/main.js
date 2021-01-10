@@ -33,7 +33,7 @@ $('.webUrl').on('blur',(e) => {
 })
 
 const render = () => {
-  hashMap.forEach(node => {
+  hashMap.forEach((node,index) => {
     if(node.logoType === 'image') {
       const $li = $(`
         <li>
@@ -47,6 +47,10 @@ const render = () => {
           </a>
         </li>
       `).appendTo($siteList)
+      $li.on('click',(e)=>{
+        e.stopPropagation()
+        console.log(1)
+      })
       return
     }
     const $li = $(`
@@ -61,6 +65,11 @@ const render = () => {
         </a>
       </li>
     `).appendTo($siteList)
+    $li.on('click',(e)=>{
+      e.stopPropagation()
+      console.log(1)
+    })
+    console.log($li)
   })
 }
 render()
