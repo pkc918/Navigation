@@ -2,7 +2,6 @@
 let $siteList = $('.siteList')
 const webData = localStorage.getItem('webData')
 const webDataList = JSON.parse(webData)
-
 const hashMap = webDataList || [
   {logo:'./images/github.jpg',url:'https://github.com/',title:'Github',logoType:'image'},
   {logo:'./images/vue.png',url:'https://cn.vuejs.org/index.html',title:'Vue',logoType:'image'},
@@ -16,53 +15,18 @@ const hashMap = webDataList || [
   {logo:'./images/zhihu.png',url:'https://zhihu.com/follow',title:'知乎',logoType:'image'},
   {logo:'./images/gold.png',url:'https://juejin.cn/',title:'掘金',logoType:'image'},
 ]
-
 const storageData = () => {
   const hashWebData = JSON.stringify(hashMap)
   localStorage.setItem('webData',hashWebData)
 }
-storageData()
-/* 模态框内容 */
-let title,url,logoUrl
-$('.webTitle').on('blur',(e) => {
-  title = (e.target.value).trim()
-})
-$('.webUrl').on('blur',(e) => {
-  url = (e.target.value).trim()
-  logoUrl = url
-})
 
-let timer = null;
-let flag = true;
-
-const touchmoveHander=function(){
-  clearTimeout(timer);
-  timer=null;
-}
-
-const touchendHander=function(){
-  clearTimeout(timer);
-  return false;
-}
-
-const deleteWebList = (node,index) => {
-  node.on('touchstart',(e) => {
-    timer = setTimeout(()=>{
-      flag  = false
-      hashMap.splice(index,1)
-      storageData()
-      render()
-    },1000)
-  })
-  node.on('touchmove',touchmoveHander)
-  node.on('touchend',touchendHander)
-}
-
+/* 渲染 */
 const render = () => {
+  let $li
   $siteList.find('li').remove()
   hashMap.forEach((node,index) => {
     if(node.logoType === 'image') {
-      const $li = $(`
+      $li = $(`
         <li>
           <a href="${node.url}">
             <div class="site">
@@ -74,25 +38,8 @@ const render = () => {
           </a>
         </li>
       `).appendTo($siteList)
-      $li.on('touchstart',(e) => {
-        timer = setTimeout(()=>{
-          flag  = false
-          hashMap.splice(index,1)
-          storageData()
-          render()
-        },1000)
-      })
-      $li.on('touchmove',touchmoveHander)
-      $li.on('touchend',()=>{
-        clearTimeout(timer);
-        if(flag){
-          window.open(node.url)
-        }
-        return false;
-      })
-      
     } else {
-      const $li = $(`
+      $li = $(`
         <li>
           <a href="${node.url}">
             <div class="site">
@@ -104,15 +51,21 @@ const render = () => {
           </a>
         </li>
       `).appendTo($siteList)
-      // deleteWebList($li,index)
     }
+    deleteWebList($li,node.url,index)
   })
 }
 render()
 
-
-
-
+/* 模态框内容 */
+let title,url,logoUrl
+$('.webTitle').on('blur',(e) => {
+  title = (e.target.value).trim()
+})
+$('.webUrl').on('blur',(e) => {
+  url = (e.target.value).trim()
+  logoUrl = url
+})
 
 /* 模态框展示 */
 $('.addWeb').on('click',()=>{
@@ -144,6 +97,38 @@ $('.determineBtn').on('click',()=>{
 $('.cancelBtn').on('click',()=>{
   hidden()
 })
+
+// 长按删除和点击跳转的处理
+/* 
+  用了touchstart事件后，点击不会再触发a跳转，绑定click也不行
+  这里用到了类似防抖和节流
+  长按删除，防抖
+  点击跳转，节流
+*/
+let timer = null;
+let flag = true;
+const deleteWebList = (node,url,index) => {
+  node.on('touchstart',(e) => {
+    timer = setTimeout(()=>{
+      flag  = false
+      hashMap.splice(index,1)
+      storageData()
+      render()
+    },1000)
+  })
+  node.on('touchmove',()=>{
+    clearTimeout(timer);
+    timer=null;
+  })
+  node.on('touchend',()=>{
+    clearTimeout(timer);
+    if(flag){
+      window.open(url)
+    }
+    return false;
+  })
+}
+
 
 window.onbeforeunload = ()=>{
   storageData()
