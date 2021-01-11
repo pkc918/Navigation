@@ -32,7 +32,32 @@ $('.webUrl').on('blur',(e) => {
   logoUrl = url
 })
 
+let timer = null;
+
+const touchmoveHander=function(event){
+  clearTimeout(timer);
+  timer=null;
+}
+
+const touchendHander=function(event){
+  clearTimeout(timer);
+  return false;
+}
+
+const deleteWebList = (node,index) => {
+  node.on('touchstart',(e) => {
+    timer = setTimeout(()=>{
+      hashMap.splice(index,1)
+      storageData()
+      render()
+    },1000)
+  })
+  node.on('touchmove',touchmoveHander)
+  node.on('touchend',touchendHander)
+}
+
 const render = () => {
+  $siteList.find('li').remove()
   hashMap.forEach((node,index) => {
     if(node.logoType === 'image') {
       const $li = $(`
@@ -47,32 +72,28 @@ const render = () => {
           </a>
         </li>
       `).appendTo($siteList)
-      $li.on('click',(e)=>{
-        e.stopPropagation()
-        console.log(1)
-      })
-      return
-    }
-    const $li = $(`
-      <li>
-        <a href="${node.url}">
-          <div class="site">
-            <div class="logo">
-              ${node.logo[0].toUpperCase()}
+      deleteWebList($li,index)
+    } else {
+      const $li = $(`
+        <li>
+          <a href="${node.url}">
+            <div class="site">
+              <div class="logo">
+                ${node.logo[0].toUpperCase()}
+              </div>
+              <div class="link">${node.title}</div>
             </div>
-            <div class="link">${node.title}</div>
-          </div>
-        </a>
-      </li>
-    `).appendTo($siteList)
-    $li.on('click',(e)=>{
-      e.stopPropagation()
-      console.log(1)
-    })
-    console.log($li)
+          </a>
+        </li>
+      `).appendTo($siteList)
+      deleteWebList($li,index)
+    }
   })
 }
 render()
+
+
+
 
 
 /* 模态框展示 */
@@ -87,7 +108,6 @@ const hidden = () => {
 
 /* 确认 */
 $('.determineBtn').on('click',()=>{
-  $siteList.find('li').remove()
   if(title === undefined || title === '') {
     title = logoUrl
   }
