@@ -33,13 +33,14 @@ $('.webUrl').on('blur',(e) => {
 })
 
 let timer = null;
+let flag = true;
 
-const touchmoveHander=function(event){
+const touchmoveHander=function(){
   clearTimeout(timer);
   timer=null;
 }
 
-const touchendHander=function(event){
+const touchendHander=function(){
   clearTimeout(timer);
   return false;
 }
@@ -47,6 +48,7 @@ const touchendHander=function(event){
 const deleteWebList = (node,index) => {
   node.on('touchstart',(e) => {
     timer = setTimeout(()=>{
+      flag  = false
       hashMap.splice(index,1)
       storageData()
       render()
@@ -72,7 +74,23 @@ const render = () => {
           </a>
         </li>
       `).appendTo($siteList)
-      deleteWebList($li,index)
+      $li.on('touchstart',(e) => {
+        timer = setTimeout(()=>{
+          flag  = false
+          hashMap.splice(index,1)
+          storageData()
+          render()
+        },1000)
+      })
+      $li.on('touchmove',touchmoveHander)
+      $li.on('touchend',()=>{
+        clearTimeout(timer);
+        if(flag){
+          window.open(node.url)
+        }
+        return false;
+      })
+      
     } else {
       const $li = $(`
         <li>
@@ -86,7 +104,7 @@ const render = () => {
           </a>
         </li>
       `).appendTo($siteList)
-      deleteWebList($li,index)
+      // deleteWebList($li,index)
     }
   })
 }
