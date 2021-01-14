@@ -20,7 +20,8 @@ a {
 img {
   max-width: 100%;
   max-height: 100%;
-  height: 30px;
+  min-width: 70%;
+  /* height: 30px; */
 }
 /* style */
 body {
@@ -28,6 +29,13 @@ body {
 }
 .globalHeader {
   margin: 10px;
+}
+@media (min-width: 500px) {
+  .globalHeader {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 .globalHeader .searchForm {
   display: flex;
@@ -88,13 +96,30 @@ body {
 .dialog div .determineBtn {
   margin-left: 20%;
 }
+@media (min-width: 500px) {
+  .dialog {
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+  }
+  .dialog div {
+    width: 600px;
+    justify-content: flex-end;
+  }
+  .dialog div input {
+    width: 90%;
+  }
+  .dialog div .determineBtn {
+    margin-right: 10px;
+  }
+}
 .globalMain .siteList {
   margin: 0 10px;
   padding: 10px 0;
   background-color: #fff;
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   border-radius: 10px;
 }
 .globalMain .siteList li {
@@ -125,4 +150,40 @@ body {
   font-size: 16px;
   display: flex;
   align-items: center;
+}
+@media (min-width: 500px) {
+  .globalMain {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .globalMain .siteList {
+    justify-content: inherit;
+  }
+  .globalMain .siteList li {
+    height: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: rgba(136, 136, 136, 0.1);
+  }
+  .globalMain .siteList li .site {
+    width: 250px;
+  }
+  .globalMain .siteList li .site .logo {
+    width: 100px;
+    height: 100px;
+    font-size: 60px;
+    font-weight: 600;
+  }
+  img {
+    max-width: 50%;
+    min-width: 50%;
+    max-height: 100%;
+  }
+  .globalMain .siteList li .site .link {
+    width: 100%;
+    padding-left: 0;
+    font-size: 20px;
+    font-weight: 500;
+  }
 }
