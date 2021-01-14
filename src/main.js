@@ -42,10 +42,14 @@ let timer = null;
 let flag;
 const deleteWebList = (node,url,index) => {
   node.on('click','.close',(e)=>{
+    e.stopPropagation()
     hashMap.splice(index,1)
     storageData()
     render()
     console.log(e.currentTarget)
+  })
+  node.on('click',()=>{
+    window.open(url)
   })
   node.on('touchstart',(e) => {
     flag = true
