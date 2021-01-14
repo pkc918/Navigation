@@ -26,6 +26,7 @@ body {
 @media (min-width: 500px) {
   body {
     background: url(./images/pcbg.jpg) no-repeat 50% 50%;
+    background-position-y: top;
   }
 }
 
