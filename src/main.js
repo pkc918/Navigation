@@ -41,6 +41,12 @@ $('.webUrl').on('blur',(e) => {
 let timer = null;
 let flag;
 const deleteWebList = (node,url,index) => {
+  node.on('click','.close',(e)=>{
+    hashMap.splice(index,1)
+    storageData()
+    render()
+    console.log(e.currentTarget)
+  })
   node.on('touchstart',(e) => {
     flag = true
     timer = setTimeout(()=>{
@@ -63,6 +69,8 @@ const deleteWebList = (node,url,index) => {
   })
 }
 
+
+
 const render = () => {
   let $li
   $siteList.find('li').remove()
@@ -70,37 +78,33 @@ const render = () => {
     if(node.logoType === 'image') {
       $li = $(`
         <li>
-          <a href="${node.url}">
-            <div class="site">
-              <div class="logo">
-                <img src="${node.logo}" />
-              </div>
-              <div class="link">${node.title}</div>
-              <div class="close">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-guanbi"></use>
-                  </svg>
-              </div>
+          <div class="site">
+            <div class="logo">
+              <img src="${node.logo}" />
             </div>
-          </a>
+            <div class="link">${node.title}</div>
+            <div class="close">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-guanbi"></use>
+                </svg>
+            </div>
+          </div>
         </li>
       `).appendTo($siteList)
     } else {
       $li = $(`
         <li>
-          <a href="${node.url}">
-            <div class="site">
-              <div class="logo">
-                ${node.logo[0].toUpperCase()}
-              </div>
-              <div class="link">${node.title}</div>
-              <div class="close">
-                  <svg class="icon" aria-hidden="true">
-                    <use xlink:href="#icon-guanbi"></use>
-                  </svg>
-              </div>
+          <div class="site">
+            <div class="logo">
+              ${node.logo[0].toUpperCase()}
             </div>
-          </a>
+            <div class="link">${node.title}</div>
+            <div class="close">
+                <svg class="icon" aria-hidden="true">
+                  <use xlink:href="#icon-guanbi"></use>
+                </svg>
+            </div>
+          </div>
         </li>
       `).appendTo($siteList)
     }

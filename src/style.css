@@ -176,6 +176,7 @@ body {
   }
   .globalMain .siteList li .site {
     width: 250px;
+    cursor: pointer;
   }
   .globalMain .siteList li .site .logo {
     width: 100px;
@@ -207,5 +208,6 @@ body {
     height: 26px;
     display: flex;
     justify-content: center;
+    cursor: auto;
   }
 }
