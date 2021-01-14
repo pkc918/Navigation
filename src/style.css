@@ -17,6 +17,18 @@
   fill: currentColor;
   overflow: hidden;
 }
+body {
+  opacity: inherit;
+  opacity: 0.7;
+  background: url(./images/azbg.jpg) no-repeat 50% 50%;
+  background-size: 100%;
+}
+@media (min-width: 500px) {
+  body {
+    background: url(./images/pcbg.jpg) no-repeat 50% 50%;
+  }
+}
+
 ul > li {
   list-style-type: none;
 }
@@ -40,8 +52,7 @@ body {
 @media (min-width: 500px) {
   .globalHeader {
     width: 800px;
-    margin-left: auto;
-    margin-right: auto;
+    margin: 40px auto;
   }
 }
 .globalHeader .searchForm {
@@ -75,6 +86,7 @@ body {
   background-color: #fff;
   border: 1px solid #eee;
   border-radius: 10px;
+  z-index: 10;
 }
 .dialog div {
   width: 315px;
