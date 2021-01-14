@@ -136,6 +136,7 @@ body {
   align-items: center;
 }
 .globalMain .siteList li .site {
+  position: relative;
   width: 170px;
   display: flex;
   flex-wrap: nowrap;
@@ -192,5 +193,19 @@ body {
     padding-left: 0;
     font-size: 20px;
     font-weight: 500;
+  }
+}
+.close {
+  display: none;
+}
+@media (min-width: 500px) {
+  .close {
+    position: absolute;
+    top: 0px;
+    right: 3px;
+    font-size: 26px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
   }
 }

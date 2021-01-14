@@ -76,6 +76,11 @@ const render = () => {
                 <img src="${node.logo}" />
               </div>
               <div class="link">${node.title}</div>
+              <div class="close">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-guanbi"></use>
+                  </svg>
+              </div>
             </div>
           </a>
         </li>
@@ -89,6 +94,11 @@ const render = () => {
                 ${node.logo[0].toUpperCase()}
               </div>
               <div class="link">${node.title}</div>
+              <div class="close">
+                  <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-guanbi"></use>
+                  </svg>
+              </div>
             </div>
           </a>
         </li>
