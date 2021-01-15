@@ -1,0 +1,229 @@
+/* css reset */
+* {
+  box-sizing: border-box;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
+body {
+  opacity: inherit;
+  opacity: 0.7;
+  background: url(/azbg.0860cc33.jpg) no-repeat 50% 50%;
+  background-size: 100%;
+}
+@media (min-width: 500px) {
+  body {
+    background: url(/pcbg.64d9ad55.jpg) no-repeat 50% 50%;
+    background-position-y: top;
+  }
+}
+
+ul > li {
+  list-style-type: none;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  max-height: 100%;
+  min-width: 70%;
+  /* height: 30px; */
+}
+/* style */
+body {
+  background-color: #eee;
+}
+.globalHeader {
+  margin: 10px;
+}
+@media (min-width: 500px) {
+  .globalHeader {
+    width: 800px;
+    margin: 40px auto;
+  }
+}
+.globalHeader .searchForm {
+  display: flex;
+  justify-content: space-between;
+}
+.globalHeader .searchForm input {
+  width: 100%;
+  height: 40px;
+  border: 1px solid #eee;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
+.globalHeader .searchForm button {
+  white-space: nowrap;
+  margin-left: 5px;
+  padding: 0 15px;
+  background-color: #3385ff;
+  border: 1px solid #3385ff;
+  font-size: 16px;
+  border-radius: 3px;
+  color: #fff;
+}
+.hiddenDialog {
+  display: none;
+}
+.dialog {
+  position: absolute;
+  margin: 0 30px;
+  padding: 10px 0;
+  background-color: #fff;
+  border: 1px solid #eee;
+  border-radius: 10px;
+  z-index: 10;
+}
+.dialog div {
+  width: 315px;
+  padding: 10px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+}
+.dialog div label {
+  font-weight: 600;
+  font-size: 16px;
+}
+.dialog div input {
+  width: 80%;
+  height: 40px;
+  padding: 5px 10px;
+}
+.dialog div button {
+  padding: 10px 20px;
+  border: 1px solid #3385ff;
+  background-color: #3385ff;
+  border-radius: 10px;
+  color: #fff;
+}
+.dialog div .determineBtn {
+  margin-left: 20%;
+}
+@media (min-width: 500px) {
+  .dialog {
+    left: 50%;
+    transform: translateX(-50%);
+    margin-top: 20px;
+  }
+  .dialog div {
+    width: 600px;
+    justify-content: flex-end;
+  }
+  .dialog div input {
+    width: 90%;
+  }
+  .dialog div .determineBtn {
+    margin-right: 10px;
+  }
+}
+.globalMain .siteList {
+  margin: 0 10px;
+  padding: 10px 0;
+  background-color: #fff;
+  display: flex;
+  flex-wrap: wrap;
+  /* justify-content: space-between; */
+  border-radius: 10px;
+}
+.globalMain .siteList li {
+  height: 30px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+.globalMain .siteList li .site {
+  position: relative;
+  width: 170px;
+  display: flex;
+  flex-wrap: nowrap;
+}
+.globalMain .siteList li .site .logo {
+  width: 40px;
+  font-size: 24px;
+  white-space: nowrap;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.globalMain .siteList li .site .link {
+  padding-left: 10px;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+}
+@media (min-width: 500px) {
+  .globalMain {
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .globalMain .siteList {
+    justify-content: inherit;
+  }
+  .globalMain .siteList li {
+    height: 100px;
+    margin-left: 5px;
+    margin-right: 5px;
+    background-color: rgba(136, 136, 136, 0.1);
+  }
+  .globalMain .siteList li .site {
+    width: 250px;
+    cursor: pointer;
+  }
+  .globalMain .siteList li .site .logo {
+    width: 100px;
+    height: 100px;
+    font-size: 60px;
+    font-weight: 600;
+  }
+  img {
+    max-width: 50%;
+    min-width: 50%;
+    max-height: 100%;
+  }
+  .globalMain .siteList li .site .link {
+    width: 100%;
+    padding-left: 0;
+    font-size: 20px;
+    font-weight: 500;
+  }
+}
+.close {
+  display: none;
+}
+@media (min-width: 500px) {
+  .close {
+    position: absolute;
+    top: 0px;
+    right: 3px;
+    font-size: 26px;
+    height: 26px;
+    display: flex;
+    justify-content: center;
+    cursor: auto;
+  }
+}
+
+
+/*# sourceMappingURL=/style.e308ff8e.css.map */
